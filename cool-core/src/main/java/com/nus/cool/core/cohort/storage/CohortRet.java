@@ -128,14 +128,14 @@ public class CohortRet {
     }
 
     // TODO(lingze), only support int type value
-    public List<Integer> getValues() {
-      ArrayList<Integer> ret = new ArrayList<>();
+    public List<Float> getValues() {
+      ArrayList<Float> ret = new ArrayList<>();
       for (int i = 0; i < retUnits.length; i++) {
         if (retUnits[i] == null) {
-          ret.add(0);
+          ret.add(null);
           continue;
         }
-        ret.add((int) retUnits[i].getValue());
+        ret.add(retUnits[i].getValue());
       }
       return ret;
     }
@@ -174,7 +174,7 @@ public class CohortRet {
   /**
    * Get values of each age of a cohort.
    */
-  public List<Integer> getValuesByCohort(String cohort) {
+  public List<Float> getValuesByCohort(String cohort) {
     if (!this.cohortToValueList.containsKey(cohort)) {
       return null;
     }
@@ -260,7 +260,7 @@ public class CohortRet {
     format.put("min", min);
     format.put("size", size);
     out.put("format", format);
-    HashMap<String, List<Integer>> results = new HashMap<>();
+    HashMap<String, List<Float>> results = new HashMap<>();
     for (Entry<String, Xaxis> entry : this.cohortToValueList.entrySet()) {
       results.put(entry.getKey(), entry.getValue().getValues());
     }

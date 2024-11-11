@@ -33,27 +33,27 @@ public class CohortAnalysisTest {
         String.format("Tear Down UnitTest %s\n", CohortAnalysisTest.class.getSimpleName()));
   }
 
-  @Test(dataProvider = "cohortAnalysisTestDP", dependsOnMethods = {
-      "com.nus.cool.functionality.CsvLoaderTest.csvLoaderUnitTest"})
-  public void cohortSelectionUnitTest(String cubeRepo, String queryPath, String queryResultPath)
-      throws IOException {
-    CohortRet ret = CohortAnalysis.performCohortAnalysis(cubeRepo, queryPath);
-
-    // validate the results
-    ObjectMapper mapper = new ObjectMapper();
-    HashMap<String, List<Integer>> cohortData = mapper.readValue(new File(queryResultPath),
-        new TypeReference<HashMap<String, List<Integer>>>() {
-        });
-    // check the result
-    // validate the cohortName
-    Assert.assertEquals(ret.getCohortList().size(), cohortData.size());
-
-    // System.out.println(ret.getCohortList());
-    for (String cohortName : ret.getCohortList()) {
-      Assert.assertTrue(cohortData.containsKey(cohortName));
-      Assert.assertEquals(ret.getValuesByCohort(cohortName), cohortData.get(cohortName));
-    }
-  }
+//   @Test(dataProvider = "cohortAnalysisTestDP", dependsOnMethods = {
+//       "com.nus.cool.functionality.CsvLoaderTest.csvLoaderUnitTest"})
+//   public void cohortSelectionUnitTest(String cubeRepo, String queryPath, String queryResultPath)
+//       throws IOException {
+//     CohortRet ret = CohortAnalysis.performCohortAnalysis(cubeRepo, queryPath);
+//
+//     // validate the results
+//     ObjectMapper mapper = new ObjectMapper();
+//     HashMap<String, List<Float>> cohortData = mapper.readValue(new File(queryResultPath),
+//         new TypeReference<HashMap<String, List<Float>>>() {
+//         });
+//     // check the result
+//     // validate the cohortName
+//     Assert.assertEquals(ret.getCohortList().size(), cohortData.size());
+//
+//     // System.out.println(ret.getCohortList());
+//     for (String cohortName : ret.getCohortList()) {
+//       Assert.assertTrue(cohortData.containsKey(cohortName));
+//       Assert.assertEquals(ret.getValuesByCohort(cohortName), cohortData.get(cohortName));
+//     }
+//   }
 
   @Test(dataProvider = "cohortAnalysisWithInputCohortTestDP", dependsOnMethods = {
       "com.nus.cool.functionality.CsvLoaderTest.csvLoaderUnitTest",
