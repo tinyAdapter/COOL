@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nus.cool.core.cohort.ResultType;
 import com.nus.cool.core.cohort.storage.CohortRet;
 import com.nus.cool.core.util.ArrayUtil;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;

@@ -3,7 +3,7 @@ package com.nus.cool.core.cohort;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
-/** Enum for result type */
+/** Enum for result type. */
 public enum ResultType {
   FLOAT("FLOAT"), INT("INT");
 
